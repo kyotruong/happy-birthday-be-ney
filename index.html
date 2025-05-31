@@ -3,28 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chúc mừng sinh nhật Em Bé của Ba Kyo!</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Chúc mừng sinh nhật</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: radial-gradient(circle at center, #fff0f5 0%, #ffc0cb 100%);
+    }
+
+    #fireworks-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 192, 203, 0.5);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 1em;
+      padding: 12px 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    .signature {
+      font-size: 1.1em;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    .cake-img {
+      width: 250px;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
     <canvas id="fireworks-canvas"></canvas>
-
     <div class="container">
-      <h1>🎉 Bòn bon không hạt gửi em... 🎂</h1>
-
+      <h1>🎉 Bòn bon không hạt gửi em... 🍰</h1>
       <button onclick="showMessage()">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
-
       <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu Em</p>
-
       <img src="https://st.quantrimang.com/photos/image/2018/01/29/hinh-anh-dong-chuc-sinh-nhat-11.gif" alt="Bánh sinh nhật đáng yêu" class="cake-img" />
     </div>
   </div>
-
   <audio autoplay loop>
     <source src="happy-birthday.mp3" type="audio/mpeg" />
   </audio>
-
+  <script>
+    function showMessage() {
+      alert('Chúc em sinh nhật vui vẻ, hạnh phúc và luôn cười tươi như bông hoa nha!');
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

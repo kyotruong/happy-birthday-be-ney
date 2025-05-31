@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chúc mừng sinh nhật Em Bé!</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chúc mừng sinh nhật</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <canvas id="fireworks"></canvas>
   <div class="container">
-    <h1 class="title">🎉 Bòn bon không hạt gửi em... 🎂
-    </h1>
-    <button id="showMessageBtn">🎁 Bấm vào để nhận lời chúc đặc biệt!
-    </button>
-    <div class="signature">Ký tên: Bòn Bon Không Hạt Yêu Em</div>
-    <div class="cake">
-      <img src="cake.gif" alt="Bánh sinh nhật đáng yêu">
+    <h1 class="title">🎉 Bòn bon không hạt gửi em... 🎂</h1>
+    <button id="showWishes" class="wish-btn">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
+    <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu Em</p>
+
+    <div class="cake-container">
+      <img src="cake.gif" alt="Bánh sinh nhật đáng yêu" class="birthday-cake" />
+    </div>
+
+    <div id="wishesPopup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <p>Chúc em tuổi mới thật nhiều niềm vui, hạnh phúc, học tốt, xinh đẹp, đáng yêu và luôn rạng rỡ nhé 🎉💖</p>
+      </div>
     </div>
   </div>
 
-  <audio id="birthdayMusic" autoplay loop>
-    <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Nhạc tự phát -->
+  <audio id="birthdaySong" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"/>
     Trình duyệt của bạn không hỗ trợ audio.
   </audio>
 
   <script src="script.js"></script>
 </body>
 </html>
+

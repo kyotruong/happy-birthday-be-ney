@@ -1,11 +1,10 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
+  color: #fff;
   overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: radial-gradient(circle at center, #ffe6f0, #ffb3d9);
-  color: white;
-  text-align: center;
 }
 
 canvas {
@@ -15,21 +14,31 @@ canvas {
   z-index: 0;
   width: 100vw;
   height: 100vh;
-  background-color: transparent !important;
   pointer-events: none;
 }
 
-.container {
-  position: relative;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   z-index: 2;
-  top: 10vh;
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
 }
 
 .title {
   font-size: 3em;
   font-weight: bold;
-  text-shadow: 0 0 10px #fff;
   animation: glitter 2s infinite alternate;
+  text-shadow: 0 0 10px #fff;
 }
 
 @keyframes glitter {
@@ -37,69 +46,13 @@ canvas {
   100% { text-shadow: 0 0 15px #fff, 0 0 20px #f39, 0 0 25px #f0f; }
 }
 
-.cake {
-  width: 150px;
-  height: 200px;
-  margin: 40px auto;
-  position: relative;
-}
-
-.layer {
-  position: absolute;
-  width: 100%;
-  border-radius: 10px;
-}
-
-.layer-bottom {
-  height: 60px;
-  background: #ff9aa2;
-  bottom: 0;
-}
-.layer-middle {
-  height: 50px;
-  background: #ffb347;
-  bottom: 60px;
-}
-.layer-top {
-  height: 40px;
-  background: #fdfd96;
-  bottom: 110px;
-}
-
-.candle {
-  width: 10px;
-  height: 30px;
-  background: #fff;
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 3px;
-}
-
-.flame {
-  width: 15px;
-  height: 15px;
-  background: radial-gradient(circle, #ff0 40%, transparent 70%);
-  border-radius: 50%;
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: flicker 0.3s infinite alternate;
-}
-
-@keyframes flicker {
-  from { transform: translateX(-50%) scale(1); opacity: 1; }
-  to { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
-}
-
 button {
-  font-size: 1.2em;
-  padding: 12px 24px;
+  margin-top: 20px;
+  font-size: 1.1em;
+  padding: 10px 20px;
   background-color: #ff69b4;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   color: white;
   cursor: pointer;
   box-shadow: 0 0 10px #fff;
@@ -116,6 +69,96 @@ button {
   font-size: 1.2em;
   font-style: italic;
 }
+
+/* Bánh sinh nhật */
+.cake {
+  width: 150px;
+  height: 200px;
+  margin: 30px auto;
+  position: relative;
+}
+
+.layer {
+  position: absolute;
+  width: 100%;
+  border-radius: 10px;
+}
+.layer-bottom {
+  height: 60px;
+  background: #ff9aa2;
+  bottom: 0;
+}
+.layer-middle {
+  height: 50px;
+  background: #ffb347;
+  bottom: 60px;
+}
+.layer-top {
+  height: 40px;
+  background: #fdfd96;
+  bottom: 110px;
+}
+.candle {
+  width: 10px;
+  height: 30px;
+  background: #fff;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+}
+.flame {
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle, #ff0 40%, transparent 70%);
+  border-radius: 50%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.3s infinite alternate;
+}
+@keyframes flicker {
+  from { transform: translateX(-50%) scale(1); opacity: 1; }
+  to { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+}
+
+/* Lời chúc */
+.message-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 0 20px pink;
+  z-index: 10;
+  display: none;
+}
+
+.message-box.show {
+  display: block;
+}
+
+.message-box button {
+  background: #ff69b4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 
 
 

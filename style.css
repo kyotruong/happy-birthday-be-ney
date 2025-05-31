@@ -68,58 +68,14 @@ button {
   font-style: italic;
 }
 
-/* Bánh sinh nhật */
-.cake {
-  width: 150px;
-  height: 200px;
+/* Ảnh bánh sinh nhật */
+.cake-image {
+  width: 300px;
+  height: auto;
   margin: 30px auto;
-  position: relative;
-}
-
-.layer {
-  position: absolute;
-  width: 100%;
-  border-radius: 10px;
-}
-.layer-bottom {
-  height: 60px;
-  background: #ff9aa2;
-  bottom: 0;
-}
-.layer-middle {
-  height: 50px;
-  background: #ffb347;
-  bottom: 60px;
-}
-.layer-top {
-  height: 40px;
-  background: #fdfd96;
-  bottom: 110px;
-}
-.candle {
-  width: 10px;
-  height: 30px;
-  background: #fff;
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 3px;
-}
-.flame {
-  width: 15px;
-  height: 15px;
-  background: radial-gradient(circle, #ff0 40%, transparent 70%);
-  border-radius: 50%;
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: flicker 0.3s infinite alternate;
-}
-@keyframes flicker {
-  from { transform: translateX(-50%) scale(1); opacity: 1; }
-  to { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+  display: block;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
 }
 
 /* Lời chúc */
@@ -156,6 +112,7 @@ button {
 .hidden {
   display: none;
 }
+
 
 
 

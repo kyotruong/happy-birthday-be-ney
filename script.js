@@ -1,12 +1,48 @@
-// script.js
 function showMessage() {
-  alert(`Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn. Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ? Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay.
+  const message = `Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn. Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ? Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay.
 
 Cố gắng giữ nhau nhé hahah, đừng để đối phương đi hại đời người khác nữa. Chúng ta là mảnh ghép đẹp nhất rồi.
 
 Cảm ơn em đã luôn cho anh cơ hội ở lại với em. Cảm ơn tình yêu của anh.
 
-Một lần nữa. Chúc mừng sinh nhật Vợ Yêu của Ba Kyo!!!!!!!!`);
+Một lần nữa. Chúc mừng sinh nhật Vợ Yêu của Ba Kyo!!!!!!!!`;
+
+  const msgBox = document.createElement('div');
+  msgBox.style.position = 'fixed';
+  msgBox.style.top = '50%';
+  msgBox.style.left = '50%';
+  msgBox.style.transform = 'translate(-50%, -50%)';
+  msgBox.style.background = 'white';
+  msgBox.style.padding = '30px';
+  msgBox.style.border = '2px solid #ff69b4';
+  msgBox.style.borderRadius = '20px';
+  msgBox.style.boxShadow = '0 0 15px rgba(0,0,0,0.3)';
+  msgBox.style.zIndex = 9999;
+  msgBox.style.maxWidth = '90%';
+  msgBox.style.maxHeight = '80%';
+  msgBox.style.overflowY = 'auto';
+  msgBox.style.fontSize = '1.2rem';
+  msgBox.style.lineHeight = '1.6';
+  msgBox.style.whiteSpace = 'pre-line';
+  msgBox.style.textAlign = 'left';
+  msgBox.innerText = message;
+
+  const closeBtn = document.createElement('button');
+  closeBtn.innerText = 'Đóng';
+  closeBtn.style.marginTop = '20px';
+  closeBtn.style.padding = '10px 20px';
+  closeBtn.style.background = '#ff69b4';
+  closeBtn.style.color = 'white';
+  closeBtn.style.border = 'none';
+  closeBtn.style.borderRadius = '10px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.style.fontSize = '1rem';
+
+  closeBtn.onclick = () => document.body.removeChild(msgBox);
+  msgBox.appendChild(document.createElement('br'));
+  msgBox.appendChild(closeBtn);
+
+  document.body.appendChild(msgBox);
 }
 
 // Fireworks animation

@@ -1,35 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+""<!DOCTYPE html>
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chúc Mừng Sinh Nhật Em Bé của Ba!</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chúc mừng sinh nhật</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+  <canvas id="fireworks"></canvas>
   <div class="container">
     <h1 class="title">🎉 Bòn bon không hạt gửi em... 🎂</h1>
+
     <button class="wish-button" onclick="showWish()">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
     <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu Em</p>
 
     <div class="cake-container">
-      <img src="https://st.quantrimang.com/photos/image/2018/01/29/hinh-anh-dong-chuc-sinh-nhat-11.gif" alt="Bánh sinh nhật động" class="cake">
+      <img class="cake" src="https://st.quantrimang.com/photos/image/2018/01/29/hinh-anh-dong-chuc-sinh-nhat-11.gif" alt="Bánh sinh nhật đáng yêu" />
     </div>
+  </div>
 
-    <div class="popup" id="popup">
-      <div class="popup-content">
-        <p>Chúc em một ngày sinh nhật tràn ngập yêu thương, hạnh phúc và tiếng cười! 💖</p>
-        <button onclick="closePopup()">Đóng</button>
-      </div>
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <p>Chúc em có một ngày sinh nhật thật vui vẻ, ngập tràn yêu thương và hạnh phúc! 🥳🎂💖</p>
+      <button onclick="closePopup()">Đóng</button>
     </div>
   </div>
 
   <audio autoplay loop>
     <source src="happy-birthday.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phần tử audio.
   </audio>
-
-  <canvas id="fireworks"></canvas>
 
   <script src="script.js"></script>
 </body>
-</html>
+</html>""

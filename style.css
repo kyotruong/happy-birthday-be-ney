@@ -2,8 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #ffd1dc, #ffe6f0);
-  color: #fff;
+  background: radial-gradient(circle, #ffe6f0 10%, #ffb6c1 40%, #ff69b4 100%);
   overflow: hidden;
 }
 
@@ -22,8 +21,8 @@ canvas {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  z-index: 2;
   position: relative;
+  z-index: 2;
 }
 
 .container {
@@ -31,7 +30,7 @@ canvas {
   padding: 40px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
 }
 
 .title {
@@ -55,7 +54,6 @@ button {
   border-radius: 12px;
   color: white;
   cursor: pointer;
-  box-shadow: 0 0 10px #fff;
   animation: glow 1.5s infinite alternate;
 }
 
@@ -158,6 +156,7 @@ button {
 .hidden {
   display: none;
 }
+
 
 
 

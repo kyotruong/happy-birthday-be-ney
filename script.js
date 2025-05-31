@@ -1,4 +1,3 @@
-// script.js
 function showMessage() {
   const message = `Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn. Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ? Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay.
 
@@ -46,13 +45,22 @@ Một lần nữa. Chúc mừng sinh nhật Vợ Yêu của Ba Kyo!!!!!!!!`;
   document.body.appendChild(msgBox);
 }
 
-// Fireworks animation (enhanced)
+// Canvas setup
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// Fireworks with stronger effect
 let fireworks = [];
+
+function hexToRgb(hex) {
+  const bigint = parseInt(hex.replace('#', ''), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `${r}, ${g}, ${b}`;
+}
 
 function createFirework() {
   const x = Math.random() * canvas.width;
@@ -88,32 +96,6 @@ function updateFireworks() {
   }
   fireworks = fireworks.filter(f => f.alpha > 0);
 }
-
-function hexToRgb(hex) {
-  const bigint = parseInt(hex.replace('#', ''), 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-  return `${r}, ${g}, ${b}`;
-}
-
-setInterval(createFirework, 700);
-function animate() {
-  updateFireworks();
-  updateBalloons();
-  updateGlitter();
-  updateFlames();
-  requestAnimationFrame(animate);
-}
-animate();
-
-// Music autoplay (Happy Birthday song)
-const audio = new Audio("https://cdn.pixabay.com/audio/2023/03/13/audio_11d135e661.mp3");
-audio.loop = true;
-audio.volume = 0.6;
-window.addEventListener('click', () => {
-  audio.play().catch(e => console.log("Autoplay blocked"));
-}, { once: true });
 
 // Balloons animation
 const balloonCount = 20;
@@ -166,7 +148,7 @@ function updateGlitter() {
   }
 }
 
-// Candle flames animation
+// Candle flames animation on cake (3 candles)
 let flames = [
   { x: window.innerWidth / 2 - 50, y: window.innerHeight - 200 },
   { x: window.innerWidth / 2, y: window.innerHeight - 200 },
@@ -184,5 +166,13 @@ function updateFlames() {
     ctx.fill();
   }
 }
+
+// Animate loop
+setInterval(createFirework, 700);
+function animate() {
+  updateFireworks();
+  updateBalloons();
+  update
+
 
 

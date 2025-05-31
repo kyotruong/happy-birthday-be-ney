@@ -8,10 +8,17 @@
 </head>
 <body>
   <canvas id="fireworks"></canvas>
-  
+
+  <!-- Nhạc tự động phát -->
+  <audio id="birthdayAudio" autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthdaySong.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  </audio>
+
   <div class="wrapper">
     <div class="container">
       <h1 class="title">🎉 Happy Birthday Bé Ney! 🎂</h1>
+
       <div class="cake">
         <div class="layer layer-bottom"></div>
         <div class="layer layer-middle"></div>
@@ -20,6 +27,7 @@
           <div class="flame"></div>
         </div>
       </div>
+
       <button onclick="showMessage()">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
       <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu em</p>
     </div>
@@ -33,4 +41,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 

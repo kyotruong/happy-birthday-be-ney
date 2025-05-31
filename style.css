@@ -1,80 +1,107 @@
 body {
   margin: 0;
   padding: 0;
-  background: #ffccdd;
-  overflow: hidden;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-
-canvas#fireworks {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle, #ffd6e8, #ffc0cb);
+  overflow-x: hidden;
+  position: relative;
 }
 
 .container {
-  position: relative;
   text-align: center;
-  z-index: 10;
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 .title {
-  font-size: 3em;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #fff;
-  animation: glitter 1s infinite alternate;
+  color: #000;
+  animation: sparkle 2s infinite alternate;
 }
 
-@keyframes glitter {
-  0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff69b4; }
-  100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4; }
+@keyframes sparkle {
+  0% { text-shadow: 0 0 5px #ff99cc; }
+  100% { text-shadow: 0 0 20px #ff66b2; }
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  font-size: 1.1em;
-  border: none;
-  border-radius: 20px;
-  background: #ff4081;
+.wish-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #ff4081;
   color: white;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
-  transition: background 0.3s;
-}
-
-button:hover {
-  background: #e91e63;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .signature {
   margin-top: 20px;
-  font-size: 1.5em;
-  color: white;
+  font-size: 1.2rem;
+  color: #333;
 }
 
-.cake {
+.birthday-cake {
+  width: 180px;
   margin-top: 40px;
-  animation: floatCake 4s ease-in-out infinite;
 }
 
-.cake img {
-  width: 250px;
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
 }
 
-@keyframes floatCake {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.popup-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
 }
 
+.close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+}
 
+/* Hiệu ứng bong bóng trái tim */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('https://emoji.slack-edge.com/T5P9H29RQ/heart/2f24c38f8ed4bfc1.gif');
+  background-size: cover;
+  animation: float 6s linear infinite;
+}
 
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-600px) scale(0.5);
+    opacity: 0;
+  }
+}
 
-
-
-
-
-
-
+/* Canvas pháo hoa */
+#fireworksCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}

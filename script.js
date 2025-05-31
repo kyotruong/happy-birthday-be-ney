@@ -1,5 +1,5 @@
 function showMessage() {
-  const message = `Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn. Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ? Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay.
+  const message = `Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng em đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn. Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ? Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay.
 
 Cố gắng giữ nhau nhé hahah, đừng để đối phương đi hại đời người khác nữa. Chúng ta là mảnh ghép đẹp nhất rồi.
 
@@ -167,12 +167,22 @@ function updateFlames() {
   }
 }
 
-// Animate loop
+// Main animation loop
 setInterval(createFirework, 700);
 function animate() {
   updateFireworks();
   updateBalloons();
-  update
+  updateGlitter();
+  updateFlames();
 
+  requestAnimationFrame(animate);
+}
+animate();
 
-
+// Music autoplay (Happy Birthday)
+const audio = new Audio("https://actions.google.com/sounds/v1/human_voices/happy_birthday.ogg");
+audio.loop = true;
+audio.volume = 0.5;
+window.addEventListener('click', () => {
+  audio.play().catch(e => console.log("Autoplay blocked"));
+}, { once: true });

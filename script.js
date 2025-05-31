@@ -22,3 +22,4 @@ function createSnowflake() {
 
 // Tạo tuyết rơi liên tục
 setInterval(createSnowflake, 100);
+

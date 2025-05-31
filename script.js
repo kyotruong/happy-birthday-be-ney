@@ -1,11 +1,7 @@
 function showMessage() {
   const box = document.getElementById("messageBox");
   const msg = document.getElementById("messageText");
-  msg.innerText = `Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn. Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ?
-
-Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay. Cố gắng giữ nhau nhé hahah, đừng để đối phương đi hại đời người khác nữa. Chúng ta là mảnh ghép đẹp nhất rồi.
-
-Cảm ơn em đã luôn cho anh cơ hội ở lại với em. Cảm ơn tình yêu của anh. Một lần nữa. Chúc mừng sinh nhật Vợ Yêu của Ba Kyo!!!!!!!!`;
+  msg.innerText = `Chúc mừng sinh nhật! Chúc bạn một ngày thật vui vẻ và tràn đầy hạnh phúc.`;
   box.classList.add("show");
 }
 
@@ -55,3 +51,4 @@ function animateFireworks() {
   requestAnimationFrame(animateFireworks);
 }
 animateFireworks();
+

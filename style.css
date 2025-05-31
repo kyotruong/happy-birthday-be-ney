@@ -1,3 +1,4 @@
+/* Tổng quan các phần tử */
 * {
     margin: 0;
     padding: 0;
@@ -6,11 +7,13 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
-    overflow: hidden; /* Chặn thanh cuộn khi tuyết rơi */
+    background: linear-gradient(45deg, #f39c12, #e74c3c); /* Gradient nền */
+    color: white;
+    overflow: hidden; /* Chặn thanh cuộn */
+    background-attachment: fixed; /* Nền cố định khi cuộn */
 }
 
+/* Container chính */
 .container {
     display: flex;
     flex-direction: column;
@@ -19,46 +22,54 @@ body {
     height: 100vh;
     text-align: center;
     position: relative;
+    z-index: 1;
 }
 
+/* Header */
 header {
-    background-color: #ff9f00;
+    background-color: rgba(255, 255, 255, 0.6); /* Nền mờ */
     padding: 20px;
     border-radius: 10px;
-    color: white;
+    color: #ff6f61;
     font-size: 36px;
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ phía sau */
 }
 
+/* Nội dung */
 .content p {
     font-size: 24px;
-    color: #444;
     margin: 20px 0;
+    font-family: 'Georgia', serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Hiệu ứng đổ bóng nhẹ */
 }
 
+/* Button */
 button {
     padding: 15px 30px;
     font-size: 18px;
     color: white;
-    background-color: #ff9f00;
+    background-color: #ff6f61;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #ff7f00;
+    background-color: #e74c3c;
 }
 
+/* Footer */
 footer {
     position: absolute;
     bottom: 20px;
     font-size: 14px;
-    color: #777;
+    color: white;
 }
 
 /* Trái tim động */
@@ -136,7 +147,20 @@ footer {
     }
 }
 
-/* Điều chỉnh kích thước cho thiết bị nhỏ */
+/* Hiệu ứng ánh sáng bokeh */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/35-degree-angled-lines.png') repeat;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Thêm hiệu ứng phản chiếu ánh sáng */
 @media (max-width: 768px) {
     header {
         font-size: 28px;

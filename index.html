@@ -2,33 +2,30 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bòn bon không hạt gửi em...</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chúc mừng sinh nhật!</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <canvas id="fireworks"></canvas>
   <div class="container">
-    <h1 class="title">✨ Bòn bon không hạt gửi em... ✨
-    </h1>
-    <button class="btn" onclick="showMessage()">🎁 Nhận lời chúc đặc biệt</button>
-    <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu em</p>
-
-    <div class="message-box" id="messageBox">
-      <p>❤️ Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ... (phần nội dung đậy đủ)... ❤️</p>
-      <button onclick="closeMessage()">Đóng</button>
-    </div>
-
+    <h1 class="title">🎉 Bòn bon không hạt gửi em... 🎂</h1>
+    <button id="showMessageBtn">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
+    <div class="signature">Ký tên: Bòn Bon Không Hạt Yêu Em</div>
     <div class="cake">
-      <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="birthday cake" />
+      <img src="cake.gif" alt="Bánh sinh nhật đáng yêu" />
     </div>
   </div>
 
-  <audio id="birthdaySong" src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mp3" autoplay loop></audio>
+  <audio id="birthdayMusic" autoplay loop>
+    <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ audio.
+  </audio>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

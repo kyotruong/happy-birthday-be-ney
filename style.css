@@ -1,192 +1,56 @@
-/* Tổng quan các phần tử */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* style.css */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(45deg, #f39c12, #e74c3c); /* Gradient nền */
-    color: white;
-    overflow: hidden; /* Chặn thanh cuộn */
-    background-attachment: fixed; /* Nền cố định khi cuộn */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(to bottom, #fcd5ce, #fae1dd);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Container chính */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
-/* Header */
-header {
-    background-color: rgba(255, 255, 255, 0.6); /* Nền mờ */
-    padding: 20px;
-    border-radius: 10px;
-    color: #ff6f61;
-    font-size: 36px;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-    backdrop-filter: blur(10px); /* Hiệu ứng mờ phía sau */
+.content {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-/* Nội dung */
-.content p {
-    font-size: 24px;
-    margin: 20px 0;
-    font-family: 'Georgia', serif;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Hiệu ứng đổ bóng nhẹ */
+h1 {
+  font-size: 2.5rem;
+  color: #e63946;
 }
 
-/* Button */
+p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
 button {
-    padding: 15px 30px;
-    font-size: 18px;
-    color: white;
-    background-color: #ff6f61;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
+  margin-top: 20px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  background: #ff99c8;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #e74c3c;
+  background: #ff5da2;
 }
-
-/* Footer */
-footer {
-    position: absolute;
-    bottom: 20px;
-    font-size: 14px;
-    color: white;
-}
-
-/* Trái tim động */
-.heart {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: #ff0066;
-    transform: rotate(45deg);
-    animation: heartBeat 1s infinite;
-}
-
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #ff0066;
-    border-radius: 50%;
-}
-
-.heart::before {
-    left: -25px;
-    top: 0;
-}
-
-.heart::after {
-    top: -25px;
-    left: 0;
-}
-
-@keyframes heartBeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-}
-
-/* Tuyết rơi */
-#snow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 999;
-    overflow: hidden;
-}
-
-.snowflake {
-    position: absolute;
-    top: -10px;
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: snow 10s linear infinite;
-}
-
-@keyframes snow {
-    0% {
-        top: -10px;
-        opacity: 1;
-    }
-    100% {
-        top: 100%;
-        opacity: 0;
-    }
-}
-
-/* Tạo popup cho lời chúc */
-#message-box {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-}
-
-#message-box h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-#message-box p {
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-/* Nút đóng popup */
-#close-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #ff0066;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#close-btn:hover {
-    background-color: #e74c3c;
-}
-

@@ -1,193 +1,95 @@
-/* Tổng quan các phần tử */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// script.js
+function showMessage() {
+  alert(`Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn. Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ? Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay.
+
+Cố gắng giữ nhau nhé hahah, đừng để đối phương đi hại đời người khác nữa. Chúng ta là mảnh ghép đẹp nhất rồi.
+
+Cảm ơn em đã luôn cho anh cơ hội ở lại với em. Cảm ơn tình yêu của anh.
+
+Một lần nữa. Chúc mừng sinh nhật Vợ Yêu của Ba Kyo!!!!!!!!`);
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(45deg, #f39c12, #e74c3c); /* Gradient nền */
-    color: white;
-    overflow: hidden; /* Chặn thanh cuộn */
-    background-attachment: fixed; /* Nền cố định khi cuộn */
+// Fireworks animation
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let fireworks = [];
+
+function createFirework() {
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height / 2;
+  const colors = ["#ff0", "#f0f", "#0ff", "#f90", "#0f0"];
+  for (let i = 0; i < 30; i++) {
+    fireworks.push({
+      x,
+      y,
+      angle: Math.random() * 2 * Math.PI,
+      speed: Math.random() * 5 + 2,
+      radius: 0,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    });
+  }
 }
 
-/* Container chính */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+function updateFireworks() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < fireworks.length; i++) {
+    const f = fireworks[i];
+    const vx = Math.cos(f.angle) * f.speed;
+    const vy = Math.sin(f.angle) * f.speed;
+    f.x += vx;
+    f.y += vy;
+    f.radius += 0.5;
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+    ctx.fillStyle = f.color;
+    ctx.fill();
+  }
+  fireworks = fireworks.filter(f => f.radius < 10);
 }
 
-/* Header */
-header {
-    background-color: rgba(255, 255, 255, 0.6); /* Nền mờ */
-    padding: 20px;
-    border-radius: 10px;
-    color: #ff6f61;
-    font-size: 36px;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-    backdrop-filter: blur(10px); /* Hiệu ứng mờ phía sau */
+setInterval(createFirework, 800);
+function animate() {
+  updateFireworks();
+  updateBalloons();
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Music autoplay
+const audio = new Audio("https://cdn.pixabay.com/download/audio/2022/03/23/audio_a7b73b1b3e.mp3?filename=birthday-party-111168.mp3");
+audio.loop = true;
+audio.volume = 0.5;
+window.addEventListener('click', () => {
+  audio.play().catch(e => console.log("Autoplay blocked"));
+}, { once: true });
+
+// Balloons animation
+const balloonCount = 20;
+let balloons = [];
+
+for (let i = 0; i < balloonCount; i++) {
+  balloons.push({
+    x: Math.random() * canvas.width,
+    y: canvas.height + Math.random() * canvas.height,
+    r: 10 + Math.random() * 10,
+    speed: 1 + Math.random() * 2,
+    color: `hsl(${Math.random() * 360}, 70%, 60%)`
+  });
 }
 
-/* Nội dung */
-.content p {
-    font-size: 24px;
-    margin: 20px 0;
-    font-family: 'Georgia', serif;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Hiệu ứng đổ bóng nhẹ */
-}
-
-/* Button */
-button {
-    padding: 15px 30px;
-    font-size: 18px;
-    color: white;
-    background-color: #ff6f61;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #e74c3c;
-}
-
-/* Footer */
-footer {
-    position: absolute;
-    bottom: 20px;
-    font-size: 14px;
-    color: white;
-}
-
-/* Trái tim động */
-.heart {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: #ff0066;
-    transform: rotate(45deg);
-    animation: heartBeat 1s infinite;
-}
-
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #ff0066;
-    border-radius: 50%;
-}
-
-.heart::before {
-    left: -25px;
-    top: 0;
-}
-
-.heart::after {
-    top: -25px;
-    left: 0;
-}
-
-@keyframes heartBeat {
-    0%, 100% {
-        transform: scale(1);
+function updateBalloons() {
+  for (let b of balloons) {
+    b.y -= b.speed;
+    if (b.y < -50) {
+      b.y = canvas.height + Math.random() * canvas.height;
+      b.x = Math.random() * canvas.width;
     }
-    50% {
-        transform: scale(1.2);
-    }
+    ctx.beginPath();
+    ctx.ellipse(b.x, b.y, b.r * 0.8, b.r, 0, 0, Math.PI * 2);
+    ctx.fillStyle = b.color;
+    ctx.fill();
+  }
 }
-
-/* Tuyết rơi */
-#snow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 999;
-    overflow: hidden;
-}
-
-.snowflake {
-    position: absolute;
-    top: -10px;
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: snow 10s linear infinite;
-}
-
-@keyframes snow {
-    0% {
-        top: -10px;
-        opacity: 1;
-    }
-    100% {
-        top: 100%;
-        opacity: 0;
-    }
-}
-
-/* Tạo popup cho lời chúc */
-#message-box {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-}
-
-#message-box h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-#message-box p {
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-/* Nút đóng popup */
-#close-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #ff0066;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#close-btn:hover {
-    background-color: #e74c3c;
-}
-
-

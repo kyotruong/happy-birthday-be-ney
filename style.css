@@ -1,90 +1,74 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom right, #ffc0cb, #fff0f5);
+  background: #ffccdd;
   overflow: hidden;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-canvas {
+canvas#fireworks {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
 .container {
   position: relative;
-  z-index: 2;
   text-align: center;
-  padding-top: 50px;
-  color: #fff;
+  z-index: 10;
+  padding-top: 60px;
 }
 
 .title {
-  font-size: 40px;
+  font-size: 3em;
   font-weight: bold;
   color: #fff;
-  text-shadow: 2px 2px #ff69b4;
+  animation: glitter 1s infinite alternate;
 }
 
-.btn {
-  padding: 15px 25px;
-  font-size: 18px;
-  background-color: #ff69b4;
-  color: white;
+@keyframes glitter {
+  0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff69b4; }
+  100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4; }
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.1em;
   border: none;
   border-radius: 20px;
+  background: #ff4081;
+  color: white;
   cursor: pointer;
-  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #e91e63;
 }
 
 .signature {
-  font-size: 20px;
   margin-top: 20px;
-}
-
-.message-box {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  color: black;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px pink;
-  z-index: 100;
-}
-
-.message-box button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: hotpink;
+  font-size: 1.5em;
   color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+}
+
+.cake {
+  margin-top: 40px;
+  animation: floatCake 4s ease-in-out infinite;
 }
 
 .cake img {
-  width: 200px;
-  margin-top: 40px;
-  animation: bounce 2s infinite;
+  width: 250px;
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+@keyframes floatCake {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
+
 
 
 

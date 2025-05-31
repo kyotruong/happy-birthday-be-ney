@@ -1,90 +1,68 @@
-// Show/hide message box
 function showMessage() {
-  document.getElementById("messageBox").style.display = "block";
+  alert(`Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ. Chúc mừng đã đi được 1 nửa cuộc đời, và hoàn thành được 1 nửa các nguyện vọng mà em mong muốn.
+
+Mặc dù chưa được trọn vẹn như ý em, nhưng cũng là thành tựu đáng ghi nhận mà em nhỉ? Chúng ta đã cùng nhau làm mọi thứ, cùng nhau trải qua gần như là mọi khó khăn, mới có được ngày hôm nay.
+
+Cố gắng giữ nhau nhé hahah, đừng để đối phương đi hại đời người khác nữa. Chúng ta là mảnh ghép đẹp nhất rồi.
+
+Cảm ơn em đã luôn cho anh cơ hội ở lại với em. Cảm ơn tình yêu của anh.
+
+Một lần nữa. Chúc mừng sinh nhật Vợ Yêu của Ba Kyo!!!!!!!!`);
 }
 
-function closeMessage() {
-  document.getElementById("messageBox").style.display = "none";
-}
+document.getElementById("showMessageBtn").addEventListener("click", showMessage);
 
-// Auto-play audio
-window.addEventListener("DOMContentLoaded", () => {
-  const song = document.getElementById("birthdaySong");
-  song.play().catch(() => {
-    // play may fail without user interaction in some browsers
-  });
-});
-
-// Simple fireworks animation
+// Fireworks animation
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const particles = [];
-function createParticle(x, y, color) {
-  return {
-    x,
-    y,
-    radius: Math.random() * 3 + 1,
-    color,
-    dx: (Math.random() - 0.5) * 5,
-    dy: (Math.random() - 0.5) * 5,
-    life: 100
-  };
-}
+let particles = [];
 
-function explode(x, y) {
-  const colors = ["#ff69b4", "#ffccff", "#ffff66", "#ff9966"];
-  for (let i = 0; i < 30; i++) {
-    particles.push(createParticle(x, y, colors[Math.floor(Math.random() * colors.length)]));
+function createParticle() {
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height / 2;
+  const colors = ["#ff0", "#f0f", "#0ff", "#f90", "#0f0", "#f00"];
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x,
+      y,
+      angle: Math.random() * 2 * Math.PI,
+      speed: Math.random() * 4 + 2,
+      radius: 0,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life: 100
+    });
   }
 }
 
-function animateFireworks() {
+function updateParticles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = particles.length - 1; i >= 0; i--) {
-    const p = particles[i];
-    p.x += p.dx;
-    p.y += p.dy;
-    p.life--;
+  for (let p of particles) {
+    const vx = Math.cos(p.angle) * p.speed;
+    const vy = Math.sin(p.angle) * p.speed;
+    p.x += vx;
+    p.y += vy;
+    p.radius += 0.3;
+    p.life -= 1;
+
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
     ctx.fillStyle = p.color;
     ctx.fill();
-    if (p.life <= 0) particles.splice(i, 1);
   }
-  requestAnimationFrame(animateFireworks);
-}
-animateFireworks();
 
-setInterval(() => {
-  explode(Math.random() * canvas.width, Math.random() * canvas.height / 2);
-}, 1000);
-
-// Optional: heart or snow effect
-function spawnHearts() {
-  const heart = document.createElement("div");
-  heart.innerText = "❤️";
-  heart.style.position = "fixed";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.top = "100vh";
-  heart.style.fontSize = Math.random() * 20 + 20 + "px";
-  heart.style.color = "#ff69b4";
-  heart.style.animation = "floatUp 5s linear forwards";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 5000);
+  particles = particles.filter(p => p.life > 0);
 }
 
-setInterval(spawnHearts, 500);
+setInterval(createParticle, 800);
+function animate() {
+  updateParticles();
+  requestAnimationFrame(animate);
+}
+animate();
 
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes floatUp {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-100vh); opacity: 0; }
-}`;
-document.head.appendChild(style);
 
 
 

@@ -1,81 +1,79 @@
-body {
+body, html {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at center, #fff0f5, #ffc0cb);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
   overflow: hidden;
-  text-align: center;
+  background: #ffdde1;
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
+}
+
+#background-animation {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, #fff0f5 0%, #ffc0cb 100%);
+  z-index: -2;
+  animation: shimmer 10s infinite alternate;
+}
+
+@keyframes shimmer {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.2); }
 }
 
 .container {
-  position: relative;
-  z-index: 1;
-  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 192, 203, 0.5);
 }
 
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
+h1 {
+  font-size: 2.5em;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
-.wish-button {
+button {
+  font-size: 1em;
+  padding: 12px 20px;
   background-color: #ff69b4;
   color: white;
-  font-size: 1rem;
   border: none;
-  padding: 0.8rem 1.5rem;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #ff1493;
 }
 
 .signature {
-  font-style: italic;
-  color: #555;
-  margin-bottom: 1rem;
+  font-size: 1.1em;
+  color: #444;
+  margin-bottom: 15px;
 }
 
-.cake-container {
-  margin-top: 20px;
-}
-
-.cake {
+.cake-img {
   width: 250px;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-.popup {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border: 2px solid pink;
-  padding: 2rem;
+  height: auto;
   border-radius: 10px;
-  box-shadow: 0 0 10px #ff69b4;
 }
 
-.popup-content button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #ff1493;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+canvas#fireworks-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
 }
+
 

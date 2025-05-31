@@ -7,26 +7,24 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="background-animation"></div>
+  <div class="wrapper">
+    <canvas id="fireworks-canvas"></canvas>
 
-  <div class="container">
-    <h1>🎉 Bòn bon không hạt gửi em... 🎂</h1>
+    <div class="container">
+      <h1>🎉 Bòn bon không hạt gửi em... 🎂</h1>
 
-    <button onclick="showMessage()">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
+      <button onclick="showMessage()">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
 
-    <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu Em</p>
+      <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu Em</p>
 
-    <img src="https://st.quantrimang.com/photos/image/2018/01/29/hinh-anh-dong-chuc-sinh-nhat-11.gif" alt="Bánh sinh nhật đáng yêu" class="cake-img" />
+      <img src="cake.gif" alt="Bánh sinh nhật đáng yêu" class="cake-img" />
+    </div>
   </div>
 
   <audio autoplay loop>
     <source src="happy-birthday.mp3" type="audio/mpeg" />
-    Trình duyệt của bạn không hỗ trợ phát nhạc.
   </audio>
-
-  <canvas id="fireworks-canvas"></canvas>
 
   <script src="script.js"></script>
 </body>
 </html>
-

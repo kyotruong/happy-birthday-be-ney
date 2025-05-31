@@ -1,14 +1,10 @@
-/* style.css */
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background: linear-gradient(to bottom, #fcd5ce, #fae1dd);
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at center, #ffe6f0, #ffb3d9);
+  color: white;
 }
 
 canvas {
@@ -16,42 +12,57 @@ canvas {
   top: 0;
   left: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .content {
   position: absolute;
-  z-index: 2;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 1;
+  user-select: none;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: #e63946;
+.title {
+  font-size: 3rem;
+  animation: glitter 2s infinite alternate;
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
 }
 
-p {
-  font-size: 1.2rem;
-  color: #555;
+.signature {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: #fff8f8;
+  text-shadow: 0 0 4px #ffcccc;
 }
 
 button {
-  margin-top: 20px;
-  font-size: 1rem;
-  padding: 10px 20px;
-  background: #ff99c8;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  background-color: #ff69b4;
   color: white;
-  font-weight: bold;
-  transition: background 0.3s;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ffb6c1;
+  transition: transform 0.3s;
+  user-select: none;
 }
 
 button:hover {
-  background: #ff5da2;
+  transform: scale(1.1);
 }
+
+@keyframes glitter {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
+  }
+  to {
+    text-shadow: 0 0 20px #ffccff, 0 0 30px #ff99cc;
+  }
+}
+
 

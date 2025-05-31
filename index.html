@@ -2,26 +2,30 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BÒN BON KHÔNG HẠT YÊU EM!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bòn bon không hạt gửi em...</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="background"></canvas>
-
+  <canvas id="fireworks"></canvas>
   <div class="container">
-    <h1>🎉 Happy Birthday Bé Ney! 🎂</h1>
-    <button onclick="showMessage()">🎁 Bấm vào để nhận lời chúc đặc biệt!</button>
+    <h1 class="title">✨ Bòn bon không hạt gửi em... ✨
+    </h1>
+    <button class="btn" onclick="showMessage()">🎁 Nhận lời chúc đặc biệt</button>
     <p class="signature">Ký tên: Bòn Bon Không Hạt Yêu em</p>
+
+    <div class="message-box" id="messageBox">
+      <p>❤️ Chào bé Ney 3 tủi. Chúc em sinh nhật vui vẻ... (phần nội dung đậy đủ)... ❤️</p>
+      <button onclick="closeMessage()">Đóng</button>
+    </div>
+
     <div class="cake">
-      <div class="candle"></div>
-      <div class="layer layer1"></div>
-      <div class="layer layer2"></div>
-      <div class="layer layer3"></div>
+      <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="birthday cake" />
     </div>
   </div>
 
-  <canvas id="fireworks"></canvas>
+  <audio id="birthdaySong" src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mp3" autoplay loop></audio>
+
   <script src="script.js"></script>
 </body>
 </html>

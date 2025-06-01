@@ -1,27 +1,18 @@
-// Phát nhạc tự động
-window.addEventListener("DOMContentLoaded", () => {
-  const audio = document.getElementById("birthday-audio");
-  if (audio) {
-    audio.play().catch(() => {
-      // Nếu trình duyệt chặn, bật qua tương tác
-      const btn = document.getElementById("wish-button");
-      if (btn) {
-        btn.addEventListener("click", () => {
-          audio.play();
-        });
-      }
-    });
-  }
-});
+function showMessage() {
+  document.getElementById("overlay").style.display = "flex";
+}
 
-// Pháo hoa bằng canvas
+function hideMessage() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+// Fireworks effect
 const canvas = document.getElementById("fireworksCanvas");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let fireworks = [];
+const fireworks = [];
 
 function random(min, max) {
   return Math.random() * (max - min) + min;
@@ -29,51 +20,56 @@ function random(min, max) {
 
 function createFirework() {
   const x = random(100, canvas.width - 100);
-  const y = random(100, canvas.height / 2);
-  const radius = random(30, 60);
-  const colors = ['#ff69b4', '#ffcc00', '#ff6666', '#66ccff', '#ffffff'];
-
-  for (let i = 0; i < 50; i++) {
-    const angle = Math.random() * 2 * Math.PI;
-    const speed = random(2, 5);
+  const y = random(50, canvas.height / 2);
+  const count = 50;
+  const color = `hsl(${Math.floor(random(0, 360))}, 100%, 50%)`;
+  for (let i = 0; i < count; i++) {
     fireworks.push({
       x,
       y,
-      dx: Math.cos(angle) * speed,
-      dy: Math.sin(angle) * speed,
+      angle: (Math.PI * 2 * i) / count,
+      speed: random(2, 5),
+      radius: 0,
+      color,
       alpha: 1,
-      radius: random(1, 3),
-      color: colors[Math.floor(Math.random() * colors.length)],
     });
   }
 }
 
-function animateFireworks() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  fireworks.forEach((p, i) => {
-    p.x += p.dx;
-    p.y += p.dy;
-    p.alpha -= 0.01;
-
+function updateFireworks() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  fireworks.forEach((f, index) => {
+    const vx = Math.cos(f.angle) * f.speed;
+    const vy = Math.sin(f.angle) * f.speed;
+    f.x += vx;
+    f.y += vy;
+    f.alpha -= 0.02;
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
-    ctx.fillStyle = `rgba(${hexToRgb(p.color)},${p.alpha})`;
+    ctx.arc(f.x, f.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${hexToRgb(f.color)}, ${f.alpha})`;
     ctx.fill();
-
-    if (p.alpha <= 0) fireworks.splice(i, 1);
+    if (f.alpha <= 0) fireworks.splice(index, 1);
   });
-
-  requestAnimationFrame(animateFireworks);
 }
 
-function hexToRgb(hex) {
-  const bigint = parseInt(hex.replace('#', ''), 16);
-  return `${(bigint >> 16) & 255},${(bigint >> 8) & 255},${bigint & 255}`;
+function hexToRgb(hsl) {
+  const div = document.createElement("div");
+  div.style.color = hsl;
+  document.body.appendChild(div);
+  const rgb = window.getComputedStyle(div).color;
+  document.body.removeChild(div);
+  return rgb.match(/\d+/g).slice(0, 3).join(",");
 }
 
-setInterval(createFirework, 1500);
-animateFireworks();
+setInterval(() => {
+  createFirework();
+}, 1200);
+
+function animate() {
+  updateFireworks();
+  requestAnimationFrame(animate);
+}
+
+animate();
 
 
